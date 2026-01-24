@@ -4,6 +4,8 @@
 
 const SubjectCard = ({ title, subtitle, question, colorClass }) => {
   return (
+
+    
     // 1. Outer Card: relative for positioning the absolute shape, rounded corners, and shadow
     <div className="relative w-72 h-80 overflow-hidden rounded-xl shadow-xl">
       
