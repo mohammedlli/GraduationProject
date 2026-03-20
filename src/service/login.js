@@ -1,10 +1,15 @@
-import axios from "axios";
 import axiosClient from "../api";
 
 export const login = async (data) => {
   const res = await axiosClient.post("/login", {
-    ...data,
+    email: data.email,
+    password: data.password,
   });
 
-  console.log(res.data);
+  const { token, user } = res.data;
+
+  localStorage.setItem("token", token);
+  localStorage.setItem("id", user.id);
+
+  return res.data;
 };

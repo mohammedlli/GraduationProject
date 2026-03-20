@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export default function Card({ title }) {
+export default function Card({ title, id }) {
   return (
     <div className="flex justify-center">
       <div
@@ -22,18 +22,15 @@ export default function Card({ title }) {
 
         {/* المحتوى */}
         <div className="flex flex-col justify-center items-start flex-1">
-          <h3 className="text-[#1E3A8A] text-2xl font-bold mb-3">
-            {title}
-          </h3>
+          <h3 className="text-[#1E3A8A] text-2xl font-bold mb-3">{title}</h3>
 
           <p className="text-[#374151] text-sm leading-relaxed">
-            إدارة ومتابعة المهام الخاصة بالمادة الدراسية
-            بطريقة منظمة وسهلة
+            إدارة ومتابعة المهام الخاصة بالمادة الدراسية بطريقة منظمة وسهلة
           </p>
         </div>
 
         {/* زر الدخول */}
-        <Link to="/Home" className="w-full">
+        <Link to={`/stages/${id}`} className="w-full">
           <button
             className="
               w-full

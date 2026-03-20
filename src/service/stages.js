@@ -1,7 +1,6 @@
 import axiosClient from "../api";
 
-export const getAllStages = async (data) => {
-  const res = await axiosClient.get("/stags");
-
-  return res;
+export const getAllStages = async () => {
+  const res = await axiosClient.get("/stage");
+  return res?.data;
 };

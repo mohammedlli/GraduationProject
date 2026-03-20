@@ -5,20 +5,21 @@ export default function AddTask({ onSave }) {
   const [pdf, setPdf] = useState(null);
   const [deadline, setDeadline] = useState("");
   const [score, setScore] = useState("");
+  const [language, setLanguage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newTask = {
-      id: Date.now(),
       question,
       pdf,
       deadline,
+      language,
       score,
     };
 
     onSave(newTask);
-
+    setLanguage("");
     setQuestion("");
     setPdf(null);
     setDeadline("");
@@ -64,6 +65,29 @@ export default function AddTask({ onSave }) {
               focus:outline-none
             "
           />
+        </div>
+
+        <div className="mb-6">
+          <label className="block mb-2 text-right font-medium text-[#374151]">
+            اختيار الغة
+          </label>
+
+          <select
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            className="
+                w-full px-4 py-2 rounded-lg
+                border border-[#CBD5E1]
+                bg-white
+                text-right text-[#374151]
+                focus:ring-2 focus:ring-[#1E3A8A]
+                focus:outline-none
+              "
+          >
+            <option value="C++">C++</option>
+            <option value="C#">C#</option>
+            <option value="java">java</option>
+          </select>
         </div>
 
         {/* PDF */}
