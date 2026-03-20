@@ -1,19 +1,36 @@
 import axios from "axios";
-import { LANGUAGE_VERSIONS } from "./constants";
 
-const API = axios.create({
-  baseURL: "https://emkc.org/api/v2/piston",
+const axiosClient = axios.create({
+  baseURL: "https://graduationprojectbe-main-sqmi4s.laravel.cloud/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-export const executeCode = async (language, sourceCode) => {
-  const response = await API.post("/execute", {
-    language: language,
-    version: LANGUAGE_VERSIONS[language],
-    files: [
-      {
-        content: sourceCode,
-      },
-    ],
-  });
-  return response.data;
-};
+// ✅ Request interceptor (attach token)
+axiosClient.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
+// ✅ Response interceptor (handle errors)
+axiosClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");
+      console.log("Unauthorized → logout");
+      // optional: redirect to login
+      window.location.href = "/login";
+    }
+
+    return Promise.reject(error);
+  },
+);
+
+export default axiosClient;
