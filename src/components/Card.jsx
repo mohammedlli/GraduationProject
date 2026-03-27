@@ -18,11 +18,11 @@ export default function Card({ title, id }) {
         "
       >
         {/* خط جانبي رسمي */}
-        <span className="absolute top-0 right-0 h-full w-2 bg-[#1E3A8A] rounded-tr-xl rounded-br-xl"></span>
+        <span className="absolute top-0 right-0 h-full w-2 bg-gradient-to-b from-blue-400 to-indigo-500  rounded-tr-xl rounded-br-xl"></span>
 
         {/* المحتوى */}
         <div className="flex flex-col justify-center items-start flex-1">
-          <h3 className="text-[#1E3A8A] text-2xl font-bold mb-3">{title}</h3>
+          <h3 className=" text-2xl font-bold mb-3">{title}</h3>
 
           <p className="text-[#374151] text-sm leading-relaxed">
             إدارة ومتابعة المهام الخاصة بالمادة الدراسية بطريقة منظمة وسهلة
@@ -36,10 +36,10 @@ export default function Card({ title, id }) {
               w-full
               py-2.5
               rounded-lg
-              bg-[#1E3A8A]
+              bg-[#006aff]
               text-white
               font-semibold
-              hover:bg-[#1D4ED8]
+              hover:bg-[#0069fb]
               transition
             "
           >
